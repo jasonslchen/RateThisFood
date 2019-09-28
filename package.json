@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:dev": "webpack --config webpack.config.js -w",
+    "build:dev": "webpack -w",
     "build:production": "webpack --mode production",
     "start:dev": "nodemon ./server/server.js"
   },
@@ -23,7 +23,10 @@
     "express": "^4.17.1",
     "react": "^16.10.0",
     "react-dom": "^16.10.0",
-    "react-router-dom": "^5.1.1"
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.1.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
