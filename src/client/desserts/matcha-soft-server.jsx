@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MatchaSoftServe = (props) => (
   <div>
-    this is matcha soft server
+    <p>hi</p>
   </div>
 );
 

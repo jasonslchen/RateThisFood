@@ -3,23 +3,16 @@ import {
   BrowserRouter as Router, Route, Link, Switch,
 } from 'react-router-dom';
 import MatchaSoftServe from './desserts/matcha-soft-server.jsx';
+import AllDessertsLinks from './desserts/allDessertsLinks.jsx';
+import AllDessertRoutes from './desserts/allDessertsRoutes.jsx';
 
-const Desserts = ({ match }) => {
-  console.log(match.url);
-  console.log('hi');
-  return (
-    <div>
-      <div>Here are some Desserts</div>
-      {/* <ul>
-      <li>
-        <Link to={`${match.url}/Matcha-Soft-Serve`}>Matcha Soft Serve</Link>
-      </li>
-    </ul>
-    <Route path={`${match.path}/:dessert`}>
-      <MatchaSoftServe />
-    </Route> */}
-    </div>
-  );
-};
+const Desserts = (props) => (
+  <div>
+    <div>Here are some Desserts</div>
+    <AllDessertsLinks />
+    <AllDessertRoutes />
+  </div>
+
+);
 
 export default Desserts;
