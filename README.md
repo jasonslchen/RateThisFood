@@ -1,4 +1,4 @@
-# RateYourFood
+# RateThisFood
 
 A food rating web application to rate foods by dishes and find restaurants to eat at with that food. 
 
