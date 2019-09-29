@@ -5,9 +5,9 @@ import {
 import { createBrowserHistory } from 'history';
 import styled from 'styled-components';
 import Home from './home.jsx';
-import Desserts from './desserts.jsx';
-import Entrees from './entrees.jsx';
-import Appetizers from './appetizers.jsx';
+import Desserts from './desserts/desserts.jsx/index.js';
+import Entrees from './entrees/entrees.jsx';
+import Appetizers from './appetizers/appetizers.jsx/index.js';
 
 const customHistory = createBrowserHistory();
 

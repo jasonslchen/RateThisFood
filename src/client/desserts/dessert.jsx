@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Dessert = (props) => {
-  const dessertName = props.match.params.dessertId.split('-').map((word) => {
+  const dessertName = props.match.params.dessertId;
+  const foodTitle = dessertName.split('-').map((word) => {
     const capitalize = word.split('');
     capitalize[0] = capitalize[0].toUpperCase();
     return capitalize.join('');
@@ -10,7 +11,7 @@ const Dessert = (props) => {
 
   return (
     <div>
-      {dessertName}
+      {foodTitle}
     </div>
   );
 };
