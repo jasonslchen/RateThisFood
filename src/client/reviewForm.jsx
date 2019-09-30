@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import moment from 'moment';
 
 const NumberInput = styled.input`
 ::-webkit-inner-spin-button{
@@ -55,7 +56,7 @@ const ReviewForm = (props) => {
         console.log('Error with posting review ', err);
       });
   };
-
+  
   return (
     <Form onSubmit={submitForm}>
       <div>
@@ -89,7 +90,7 @@ const ReviewForm = (props) => {
             Date:
         </label>
         <div>
-          <input required value={reviewForm.Date} onChange={updateForm} type="date" id="Date" />
+          <input max={moment().local().format('YYYY-MM-DD')} required value={reviewForm.Date} onChange={updateForm} type="date" id="Date" />
         </div>
       </div>
       <div>
