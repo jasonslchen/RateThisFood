@@ -44,6 +44,7 @@ const Dessert = (props) => {
   const thankYouForTheReview = (
     <div>
       Thank you for submitting a review!
+      <button onClick={toggleReviewForm}>Submit another review :)</button>
     </div>
   );
   return (
