@@ -47,7 +47,7 @@ const ReviewForm = (props) => {
             Name:
         </label>
         <div>
-          <input onChange={updateForm} type="text" id="Reviewer" />
+          <input value={reviewForm.Reviewer} onChange={updateForm} type="text" id="Reviewer" />
         </div>
       </div>
       <div>

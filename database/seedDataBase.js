@@ -26,6 +26,7 @@ const foodSchema = new mongoose.Schema({
       Cost: Number,
       Date: String,
       Restaurant: String,
+      Review: String,
     },
   ],
 });
