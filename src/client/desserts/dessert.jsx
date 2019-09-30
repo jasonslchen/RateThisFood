@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import ReviewForm from '../reviewForm.jsx';
@@ -19,7 +19,13 @@ const Dessert = (props) => {
   const images = [];
 
   useEffect(() => {
-    axios.get('');
+    axios.get(`/api/rateFood${props.match.url}`)
+      .then((data) => {
+        console.log(data.data[0]);
+      })
+      .catch((err) => {
+        console.log('Error with acquiring data ', err);
+      });
   });
 
   return (
