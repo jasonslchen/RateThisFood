@@ -117,7 +117,7 @@ const matchaEntry = new Dessert({
       Cost: 5,
       Date: '2019-09-15',
       Restaurant: 'Stonemill Matcha',
-      Review: 'Pretty good, however I don\'t know why they called my Johnnifer?!?!',
+      Review: 'Pretty good, however I don\'t know why they called me Johnnifer?!?!',
     },
     {
       Reviewer: 'Jesse Forrester',

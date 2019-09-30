@@ -25,7 +25,7 @@ const Image = (props) => {
   return (
     <div>
       <FoodImageDiv>
-        <FoodImage src={image.Image} alt={image} />
+        <FoodImage src={image.Image} alt={image || 'no image'} />
       </FoodImageDiv>
     </div>
   );
