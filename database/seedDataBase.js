@@ -11,9 +11,9 @@ db.once('open', () => {
 
 const foodSchema = new mongoose.Schema({
   Food: String,
-  Pictures: [
+  Images: [
     {
-      Picture: String,
+      Image: String,
       Restaurant: String,
       Reviewer: String,
       Date: String,
@@ -32,7 +32,7 @@ const foodSchema = new mongoose.Schema({
 });
 
 
-const matcha = ['https://rate-this-food.s3-us-west-1.amazonaws.com/desserts/matcha-soft-serve/matcha1.jpg', ' https://rate-this-food.s3-us-west-1.amazonaws.com/desserts/matcha-soft-serve/matcha2.jpg', 'https://rate-this-food.s3-us-west-1.amazonaws.com/desserts/matcha-soft-serve/Matcha3.jpg'];
+const matcha = ['https://rate-this-food.s3-us-west-1.amazonaws.com/desserts/matcha-soft-serve/matcha1.jpg', ' https://rate-this-food.s3-us-west-1.amazonaws.com/desserts/matcha-soft-serve/matcha2.jpg', 'https://rate-this-food.s3-us-west-1.amazonaws.com/desserts/matcha-soft-serve/Matcha3.jpg', 'https://rate-this-food.s3-us-west-1.amazonaws.com/desserts/matcha-soft-serve/somisomimatcha.jpg', 'https://rate-this-food.s3-us-west-1.amazonaws.com/desserts/matcha-soft-serve/matcha+soft+serve+stonemill+matcha.jpg', 'https://rate-this-food.s3-us-west-1.amazonaws.com/desserts/matcha-soft-serve/matchamaiko.jpg'];
 const blackSesame = ['https://rate-this-food.s3-us-west-1.amazonaws.com/desserts/black-sesame-soft-serve/blacksesam1.jpg', 'https://rate-this-food.s3-us-west-1.amazonaws.com/desserts/black-sesame-soft-serve/blacksesameujitime.jpg', 'https://rate-this-food.s3-us-west-1.amazonaws.com/desserts/black-sesame-soft-serve/somismoi+black+sesame+.jpg'];
 const vanilla = ['https://rate-this-food.s3-us-west-1.amazonaws.com/desserts/vanilla-soft-serve/costcovanillasoftserve.jpg', 'https://rate-this-food.s3-us-west-1.amazonaws.com/desserts/vanilla-soft-serve/fosterfreezevanillasoftserve.jpg', 'https://rate-this-food.s3-us-west-1.amazonaws.com/desserts/vanilla-soft-serve/yogurtpark+vanilla+soft+server.jpg'];
 
@@ -40,24 +40,42 @@ const Dessert = mongoose.model('desserts', foodSchema);
 
 const matchaEntry = new Dessert({
   Food: 'matcha-soft-serve',
-  Pictures: [
+  Images: [
     {
-      Picture: matcha[0],
+      Image: matcha[0],
       Restaurant: 'Tea Master Matcha Cafe & Green Tea Shop',
       Reviewer: 'Jimmy Li',
       Date: '2018-09-30',
     },
     {
-      Picture: matcha[1],
+      Image: matcha[1],
       Restaurant: 'Nana\'s Green Tea',
       Reviewer: 'Roma Seo',
       Date: '2019-06-17',
     },
     {
-      Picture: matcha[2],
+      Image: matcha[2],
       Restaurant: 'Amausaan Uji Matcha',
       Reviewer: 'Jason Chen',
       Date: '2019-09-29',
+    },
+    {
+      Image: matcha[3],
+      Restaurant: 'Somi Somi',
+      Reviewer: 'Eileen Li',
+      Date: '2019-09-02',
+    },
+    {
+      Image: matcha[4],
+      Restaurant: 'Stonemill Matcha',
+      Reviewer: 'John Yi',
+      Date: '2019-09-15',
+    },
+    {
+      Image: matcha[5],
+      Restaurant: 'Matcha Cafe Maiko',
+      Reviewer: 'Jesse Forrester',
+      Date: '2019-09-01',
     },
   ],
   Reviews: [
@@ -85,26 +103,50 @@ const matchaEntry = new Dessert({
       Restaurant: 'Amausaan Uji Matcha',
       Review: 'Yums Yums in my Tums Tums',
     },
+    {
+      Reviewer: 'Eileen Li',
+      Rating: 0,
+      Cost: 2.5,
+      Date: '2019-09-02',
+      Restaurant: 'Somi Somi',
+      Review: '0 stars, this was not refined enough for my palate',
+    },
+    {
+      Reviewer: 'John Yi',
+      Rating: 3,
+      Cost: 5,
+      Date: '2019-09-15',
+      Restaurant: 'Stonemill Matcha',
+      Review: 'Pretty good, however I don\'t know why they called my Johnnifer?!?!',
+    },
+    {
+      Reviewer: 'Jesse Forrester',
+      Rating: 5,
+      Cost: 15,
+      Date: '2019-09-01',
+      Restaurant: 'Matcha Cafe Maiko',
+      Review: 'Was pretty good, would take the wife here.',
+    },
   ],
 });
 
 const blackSesameEntry = new Dessert({
   Food: 'black-sesame-soft-serve',
-  Pictures: [
+  Images: [
     {
-      Picture: blackSesame[0],
+      Image: blackSesame[0],
       Restaurant: 'unknown',
       Reviewer: 'Bob Builder',
       Date: '2017-01-01',
     },
     {
-      Picture: blackSesame[1],
+      Image: blackSesame[1],
       Restaurant: 'Uji Time Dessert',
       Reviewer: 'Holly Paul',
       Date: '2014-03-28',
     },
     {
-      Picture: blackSesame[2],
+      Image: blackSesame[2],
       Restaurant: 'Somi Somi',
       Reviewer: 'Adrienne Lau',
       Date: '2019-07-29',
@@ -139,21 +181,21 @@ const blackSesameEntry = new Dessert({
 });
 const vanillaEntry = new Dessert({
   Food: 'vanilla-soft-serve',
-  Pictures: [
+  Images: [
     {
-      Picture: vanilla[0],
+      Image: vanilla[0],
       Restaurant: 'Costco',
       Reviewer: 'Regina Tran',
       Date: '2018-12-20',
     },
     {
-      Picture: vanilla[1],
+      Image: vanilla[1],
       Restaurant: 'Fosters Freeze',
       Reviewer: 'Rebecca Cheung',
       Date: '2015-12-27',
     },
     {
-      Picture: vanilla[2],
+      Image: vanilla[2],
       Restaurant: 'Yogurt Park',
       Reviewer: 'Daniel Lin',
       Date: '2019-07-29',

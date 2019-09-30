@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import ReviewForm from '../reviewForm.jsx';
 import Reviews from '../reviews.jsx';
+import ImageGallery from '../imageGallery.jsx';
 
 const Title = styled.div`
   border: 1px solid black;
@@ -17,7 +18,7 @@ const Dessert = (props) => {
     return capitalize.join('');
   }).join(' ');
 
-  const [dessertData, setDessertData] = useState({ Reviews: [] });
+  const [dessertData, setDessertData] = useState({ Reviews: [], Images: [] });
   const [reviewSubmit, setReviewSubmission] = useState(false);
 
   useEffect(() => {
@@ -52,6 +53,7 @@ const Dessert = (props) => {
       <Title>
         {foodTitle}
       </Title>
+      <ImageGallery images={dessertData.Images} />
       <Reviews reviews={dessertData.Reviews} />
       {
         reviewSubmit ? thankYouForTheReview : <ReviewForm updateReviews={updateReviews} submission={toggleReviewForm} url={props.match.url} />

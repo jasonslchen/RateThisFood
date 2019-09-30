@@ -10,9 +10,9 @@ db.once('open', () => {
 
 const foodSchema = new mongoose.Schema({
   Food: String,
-  Pictures: [
+  Images: [
     {
-      Picture: String,
+      Image: String,
       Restaurant: String,
       Reviewer: String,
       Date: String,
