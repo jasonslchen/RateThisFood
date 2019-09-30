@@ -164,7 +164,7 @@ const vanillaEntry = new Dessert({
       Reviewer: 'Regina Tran',
       Rating: 3,
       Cost: 6,
-      Date: '2018-09-31',
+      Date: '2018-09-30',
       Restaurant: 'Costco',
       Review: 'Omg the servers here were so nice!',
     },

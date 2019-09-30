@@ -24,7 +24,6 @@ const Dessert = (props) => {
     let subscribed = true;
     axios.get(`/api/rateFood${props.match.url}`)
       .then((data) => {
-        console.log(data);
         if (subscribed) {
           setDessertData(data.data[0]);
         }
