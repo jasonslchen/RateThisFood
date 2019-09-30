@@ -27,14 +27,14 @@ const ReviewForm = (props) => (
             Name:
       </label>
       <div>
-        <input type="text" id="reviewer" />
+        <input type="text" id="Reviewer" />
       </div>
     </div>
     <div>
       <label>
             Rating:
       </label>
-      <RatingSelect id="rating">
+      <RatingSelect id="Rating">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -45,7 +45,7 @@ const ReviewForm = (props) => (
     <div>
       <label>Cost:</label>
       <div>
-        <NumberInput min="0" id="cost" type="number" />
+        <NumberInput min="0" id="Cost" type="number" />
       </div>
     </div>
     <div>
@@ -53,7 +53,7 @@ const ReviewForm = (props) => (
             Date:
       </label>
       <div>
-        <input type="date" id="date" />
+        <input type="date" id="Date" />
       </div>
     </div>
     <div>
@@ -61,7 +61,7 @@ const ReviewForm = (props) => (
             Restaurant:
       </label>
       <div>
-        <input type="text" id="restaurant" />
+        <input type="text" id="Restaurant" />
       </div>
     </div>
     <div>
@@ -69,7 +69,7 @@ const ReviewForm = (props) => (
             Review:
       </label>
       <div>
-        <textarea rows="5" cols="40" id="review" maxLength="280" />
+        <textarea rows="5" cols="40" id="Review" maxLength="280" />
       </div>
     </div>
     <div>
