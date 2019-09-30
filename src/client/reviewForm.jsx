@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const NumberInput = styled.input`
 ::-webkit-inner-spin-button{
@@ -15,67 +16,87 @@ const NumberInput = styled.input`
 const RatingSelect = styled.select`
 -webkit-appearance: none;
 -webkit-border-radius: 0px;
-width: 25%
+
 `;
 
 const Form = styled.form``;
 
-const ReviewForm = (props) => (
-  <Form>
-    <div>
-      <label>
+const ReviewForm = (props) => {
+  const [reviewForm, setFormValue] = useState({
+    Reviewer: '',
+    Rating: 1,
+    Cost: 0,
+    Date: '',
+    Restaurant: '',
+    Review: '',
+  });
+  const updateForm = (event) => {
+    setFormValue({
+      ...reviewForm,
+      [event.target.id]: event.target.value,
+    });
+  };
+  // const submitForm = (event) => {
+  //   event.preventDefault();
+
+  // }
+  return (
+    <Form>
+      <div>
+        <label>
             Name:
-      </label>
-      <div>
-        <input type="text" id="Reviewer" />
+        </label>
+        <div>
+          <input onChange={updateForm} type="text" id="Reviewer" />
+        </div>
       </div>
-    </div>
-    <div>
-      <label>
+      <div>
+        <label>
             Rating:
-      </label>
-      <RatingSelect id="Rating">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </RatingSelect>
-    </div>
-    <div>
-      <label>Cost:</label>
-      <div>
-        <NumberInput min="0" id="Cost" type="number" />
+        </label>
+        <RatingSelect onChange={updateForm} id="Rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </RatingSelect>
       </div>
-    </div>
-    <div>
-      <label>
+      <div>
+        <label>Cost:</label>
+        <div>
+          <NumberInput onChange={updateForm} min="0" id="Cost" type="number" />
+        </div>
+      </div>
+      <div>
+        <label>
             Date:
-      </label>
-      <div>
-        <input type="date" id="Date" />
+        </label>
+        <div>
+          <input onChange={updateForm} type="date" id="Date" />
+        </div>
       </div>
-    </div>
-    <div>
-      <label>
+      <div>
+        <label>
             Restaurant:
-      </label>
-      <div>
-        <input type="text" id="Restaurant" />
+        </label>
+        <div>
+          <input onChange={updateForm} type="text" id="Restaurant" />
+        </div>
       </div>
-    </div>
-    <div>
-      <label>
+      <div>
+        <label>
             Review:
-      </label>
-      <div>
-        <textarea rows="5" cols="40" id="Review" maxLength="280" />
+        </label>
+        <div>
+          <textarea onChange={updateForm} rows="5" cols="40" id="Review" maxLength="280" />
+        </div>
       </div>
-    </div>
-    <div>
-      <input type="submit" value="Submit Review!" />
-    </div>
-  </Form>
-);
+      <div>
+        <input type="submit" value="Submit Review!" />
+      </div>
+    </Form>
+  );
+};
 
 export default ReviewForm;

@@ -30,6 +30,7 @@ const App = (props) => (
   <Router history={customHistory}>
     <div>
       <Header>
+        <div>Rate This Food</div>
         <StyledLink to="/">Home</StyledLink>
         <StyledLink to="/appetizers">Appetizers</StyledLink>
         <StyledLink to="/entrees">Entrees</StyledLink>

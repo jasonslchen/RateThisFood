@@ -7,8 +7,7 @@ const ReviewMain = styled.div`
 border: 1px solid black;
 `;
 
-const ReviewListing = (props) => {
-  const { review } = props;
+const ReviewListing = ({ review }) => {
   const date = moment(review.Date).format('MMM DD, YYYY');
   return (
     <ReviewMain>
