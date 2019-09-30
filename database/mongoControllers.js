@@ -30,6 +30,11 @@ const foodSchema = new mongoose.Schema({
   ],
 });
 
+const getFood = (category, food) => {
+  const thisFood = mongoose.model(`${category}`, foodSchema);
+  return thisFood.find({ Food: food });
+};
+
 
 const addFood = (category, details) => {
   const NewFood = mongoose.model(`${category}`, foodSchema);
@@ -39,9 +44,9 @@ const addFood = (category, details) => {
 
 const addReview = (category, food, details) => {
   const thisFood = mongoose.model(`${category}`, foodSchema);
-  return thisFood.update({ Food: food }, { $push: { Reviews: { details } } });
+  return thisFood.update({ Food: food }, { $push: { Reviews: details } });
 };
 
-
+module.exports.getFood = getFood;
 module.exports.addFood = addFood;
 module.exports.addReview = addReview;

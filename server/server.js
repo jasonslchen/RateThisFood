@@ -16,13 +16,20 @@ app.use('/', express.static(path.resolve(__dirname, '../public')));
 
 // get when you're in a category get food information
 app.get('/api/rateFood/:category/:foodId', (req, res) => {
-
+  query.getFood(req.params.category, req.params.foodId)
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({ err });
+    });
 });
 
 // // get category page with food infos from selecting from a dropdown with courses
 app.get('/api/rateFood/:course/:category', (req, res) => {
 
 });
+
 
 app.post('/api/rateFood/:category/:foodId', (req, res) => {
   query.addReview(req.params.category, req.params.foodId, req.body)
