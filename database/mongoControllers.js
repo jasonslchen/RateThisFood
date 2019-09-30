@@ -1,22 +1,47 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('http://localhost/RateThisFood', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/RateThisFood', { useNewUrlParser: true });
 
-const db = db.connection;
+const db = mongoose.connection;
 
 db.once('open', () => {
   console.log('Mango Connected');
 });
 
-const FoodSchema = new mongoose.Schema({
-
+const foodSchema = new mongoose.Schema({
+  Food: String,
+  Pictures: [
+    {
+      Picture: String,
+      Restaurant: String,
+      Reviewer: String,
+      Date: String,
+    },
+  ],
+  Reviews: [
+    {
+      Reviewer: String,
+      Rating: Number,
+      Cost: Number,
+      Date: String,
+      Restaurant: String,
+      Review: String,
+    },
+  ],
 });
 
 
-const addFood = () => {
-
+const addFood = (category, details) => {
+  const NewFood = mongoose.model(`${category}`, foodSchema);
+  const thisFood = new NewFood({ details });
+  return thisFood.save();
 };
 
-const addReview = () => {
-
+const addReview = (category, food, details) => {
+  const thisFood = mongoose.model(`${category}`, foodSchema);
+  return thisFood.update({ Food: food }, { $push: { Reviews: { details } } });
 };
+
+
+module.exports.addFood = addFood;
+module.exports.addReview = addReview;
