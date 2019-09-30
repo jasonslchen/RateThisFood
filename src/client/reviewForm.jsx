@@ -32,7 +32,7 @@ const ReviewForm = (props) => {
   };
   const [reviewForm, setFormValue] = useState(defaultForm);
 
-  const { url, submission } = props;
+  const { url, submission, updateReviews } = props;
 
   const updateForm = (event) => {
     setFormValue({
@@ -44,15 +44,20 @@ const ReviewForm = (props) => {
   const submitForm = (event) => {
     event.preventDefault();
     axios.post(`/api/rateFood${url}`, reviewForm)
+      .then(() => axios.get(`/api/rateFood${url}`))
+      .then((data) => {
+        updateReviews(data.data[0]);
+      })
       .then(() => {
-        console.log('Review Posted');
+        submission();
       })
       .catch((err) => {
         console.log('Error with posting review ', err);
       });
   };
+
   return (
-    <Form onSubmit={(event) => { submitForm(event); submission(); }}>
+    <Form onSubmit={submitForm}>
       <div>
         <label>
             Name:

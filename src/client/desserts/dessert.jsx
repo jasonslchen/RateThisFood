@@ -34,18 +34,14 @@ const Dessert = (props) => {
       });
     return () => { console.log('unsubscribed'); subscribed = false; };
   }, [props.match.url]);
+
   const toggleReviewForm = () => {
     setReviewSubmission(!reviewSubmit);
-    if (reviewSubmit) {
-      axios.get(`/api/rateFood${props.match.url}`)
-        .then((data) => {
-          setDessertData(data.data[0]);
-        })
-        .catch((err) => {
-          console.log('Error with acquiring data ', err);
-        });
-    }
   };
+  const updateReviews = (data) => {
+    setDessertData(data);
+  };
+
   const thankYouForTheReview = (
     <div>
       Thank you for submitting a review!
@@ -58,7 +54,7 @@ const Dessert = (props) => {
       </Title>
       <Reviews reviews={dessertData.Reviews} />
       {
-        reviewSubmit ? thankYouForTheReview : <ReviewForm submission={toggleReviewForm} url={props.match.url} />
+        reviewSubmit ? thankYouForTheReview : <ReviewForm updateReviews={updateReviews} submission={toggleReviewForm} url={props.match.url} />
       }
     </div>
   );
