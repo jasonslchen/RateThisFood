@@ -5,19 +5,36 @@ import {
 import { createBrowserHistory } from 'history';
 import styled from 'styled-components';
 import Home from './home.jsx';
-import Desserts from './desserts/desserts.jsx/index.js';
+import Desserts from './desserts/desserts.jsx';
 import Entrees from './entrees/entrees.jsx';
-import Appetizers from './appetizers/appetizers.jsx/index.js';
+import Appetizers from './appetizers/appetizers.jsx';
 
 const customHistory = createBrowserHistory();
+
+const Header = styled.div`
+  background-color: red;
+  height: 50px;
+`;
+
+const StyledLink = styled(Link)`
+color: purple;
+&:hover {
+  color: orange;
+}
+border: 1px solid black;
+height: 100%;
+`;
+
 
 const App = (props) => (
   <Router history={customHistory}>
     <div>
-      <Link to="/">Home</Link>
-      <Link to="/appetizers">Appetizers</Link>
-      <Link to="/entrees">Entrees</Link>
-      <Link to="/desserts">Desserts</Link>
+      <Header>
+        <StyledLink to="/">Home</StyledLink>
+        <StyledLink to="/appetizers">Appetizers</StyledLink>
+        <StyledLink to="/entrees">Entrees</StyledLink>
+        <StyledLink to="/desserts">Desserts</StyledLink>
+      </Header>
       <Switch>
         <Route path="/desserts" component={Desserts} />
         <Route path="/entrees" component={Entrees} />

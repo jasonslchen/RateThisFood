@@ -22,6 +22,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "history": "^4.10.1",
+    "mongo": "^0.1.0",
+    "mongoose": "^5.7.1",
     "react": "^16.10.0",
     "react-dom": "^16.10.0",
     "react-redux": "^7.1.1",

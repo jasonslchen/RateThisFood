@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
+const Title = styled.div`
+  border: 1px solid black;
+`;
+
+
 const Dessert = (props) => {
   const dessertName = props.match.params.dessertId;
   const foodTitle = dessertName.split('-').map((word) => {
@@ -11,7 +17,9 @@ const Dessert = (props) => {
 
   return (
     <div>
-      {foodTitle}
+      <Title>
+        {foodTitle}
+      </Title>
     </div>
   );
 };

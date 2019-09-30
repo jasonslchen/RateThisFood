@@ -2,8 +2,8 @@ import React from 'react';
 import {
   BrowserRouter as Router, Route, Link, Switch,
 } from 'react-router-dom';
-import Dessert from './desserts/dessert.jsx';
-import AllDesserts from './desserts/allDesserts.jsx';
+import Dessert from './dessert.jsx';
+import AllDesserts from './allDesserts.jsx';
 // const Dessert = ({ match }) => <p>{match.params.id}</p>;
 
 const Desserts = (props) => (
