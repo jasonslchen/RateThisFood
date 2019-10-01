@@ -12,7 +12,7 @@ import Appetizers from './appetizers/appetizers.jsx';
 const customHistory = createBrowserHistory();
 
 const Header = styled.div`
-  background-color: red;
+  background-color: #9AD4D6;
   height: 50px;
 `;
 
@@ -25,10 +25,13 @@ border: 1px solid black;
 height: 100%;
 `;
 
+const AppDiv = styled.div`
+background-color: #F2FDFF;
+`;
 
 const App = (props) => (
   <Router history={customHistory}>
-    <div>
+    <AppDiv>
       <Header>
         <div>Rate This Food</div>
         <StyledLink to="/">Home</StyledLink>
@@ -42,7 +45,7 @@ const App = (props) => (
         <Route path="/appetizers" component={Appetizers} />
         <Route exact path="/" component={Home} />
       </Switch>
-    </div>
+    </AppDiv>
   </Router>
 );
 

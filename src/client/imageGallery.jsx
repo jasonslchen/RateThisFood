@@ -11,6 +11,18 @@ const ImageGalleryMain = styled.div`
 display: flex
 `;
 
+const FancyButton = styled.button`
+::before {
+  content: '👉🏼';
+}
+`;
+
+const OppositeFancyButton = styled(FancyButton)`
+  ::before {
+    content: '👈🏼';
+  }
+`;
+
 const ImageGallery = (props) => {
   const { images } = props;
 
@@ -28,13 +40,13 @@ const ImageGallery = (props) => {
   return (
     <ImageGalleryMain>
       <div>
-        <button onClick={moveImages} id="back">Back</button>
+        <OppositeFancyButton onClick={moveImages} id="back" />
       </div>
       <ImageCarousel>
         {imageCarousel}
       </ImageCarousel>
       <div>
-        <button onClick={moveImages} id="next">Next</button>
+        <FancyButton onClick={moveImages} id="next" />
       </div>
     </ImageGalleryMain>
   );

@@ -14,13 +14,17 @@ const NumberInput = styled.input`
 }  
 `;
 
+
 const RatingSelect = styled.select`
 -webkit-appearance: none;
 -webkit-border-radius: 0px;
 
 `;
 
-const Form = styled.form``;
+const Form = styled.form`
+border: 1px solid black;
+// background-color: #F2FDFF;
+`;
 
 const ReviewForm = (props) => {
   const defaultForm = {

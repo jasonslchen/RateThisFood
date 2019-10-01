@@ -20,7 +20,7 @@ const Dessert = (props) => {
 
   const [dessertData, setDessertData] = useState({ Reviews: [], Images: [] });
   const [reviewSubmit, setReviewSubmission] = useState(false);
-
+  const [submitInitReview, setSubmitInitReview] = useState(true);
   useEffect(() => {
     let subscribed = true;
     axios.get(`/api/rateFood${props.match.url}`)
@@ -36,7 +36,11 @@ const Dessert = (props) => {
   }, [props.match.url]);
 
   const toggleReviewForm = () => {
-    setReviewSubmission(!reviewSubmit);
+    if (submitInitReview) {
+      setSubmitInitReview(false);
+    } else {
+      setReviewSubmission(!reviewSubmit);
+    }
   };
   const updateDessertData = (data) => {
     setDessertData(data);
@@ -48,6 +52,12 @@ const Dessert = (props) => {
       <button onClick={toggleReviewForm}>Submit another review :)</button>
     </div>
   );
+  const submitAReview = (
+    <div>
+      Do you want to submit a review?
+      <button onClick={toggleReviewForm}>Submit a review</button>
+    </div>
+  );
   return (
     <div>
       <Title>
@@ -56,7 +66,7 @@ const Dessert = (props) => {
       <ImageGallery images={dessertData.Images} />
       <Reviews reviews={dessertData.Reviews} />
       {
-        reviewSubmit ? thankYouForTheReview : <ReviewForm updateDessertData={updateDessertData} submission={toggleReviewForm} url={props.match.url} />
+        submitInitReview ? submitAReview : (reviewSubmit ? thankYouForTheReview : <ReviewForm updateDessertData={updateDessertData} submission={toggleReviewForm} url={props.match.url} />)
       }
     </div>
   );
