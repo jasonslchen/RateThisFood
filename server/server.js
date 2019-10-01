@@ -3,12 +3,28 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const moment = require('moment');
+const multer = require('multer');
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
 const query = require('../database/mongoControllers.js');
 
+// const upload = multer({ storage: '../storedImages' });
+const storage = multer.diskStorage({
+  destination: path.resolve(__dirname, '../storedImages'),
+  filename(req, file, cb) {
+    cb(null, `IMAGE-${path.extname(file.originalname)}`);
+  },
+});
 
+const upload = multer({
+  storage,
+  limits: { fileSize: 1000000 },
+}).single('Image');
+
+
+app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 
@@ -25,11 +41,20 @@ app.get('/api/rateFood/:category/:foodId', (req, res) => {
     });
 });
 
-// // get category page with food infos from selecting from a dropdown with courses
+// get category page with food infos from selecting from a dropdown with courses
+app.post('/api/rateFood/:category/:foodId/image', (req, res) => {
+  console.log('hit');
+  upload(req, res, (err) => {
+    console.log('Request file ---', req.file);
+    res.send(200);
+  });
+});
+
+// upload image
+
 app.get('/api/rateFood/:course/:category', (req, res) => {
 
 });
-
 
 app.post('/api/rateFood/:category/:foodId', (req, res) => {
   query.addReview(req.params.category, req.params.foodId, req.body)

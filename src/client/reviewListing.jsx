@@ -12,7 +12,7 @@ const ReviewListing = ({ review }) => {
   return (
     <ReviewMain>
       <div>Reviewer: {review.Reviewer}</div>
-      <div>Rating: {review.Rating}</div>
+      <div>Rating: {review.Rating}/5</div>
       <div>Cost: ${review.Cost}</div>
       <div>Date: {date}</div>
       <div>Restaurant: {review.Restaurant}</div>

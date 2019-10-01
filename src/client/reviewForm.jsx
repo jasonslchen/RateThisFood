@@ -32,8 +32,15 @@ const ReviewForm = (props) => {
     Review: '',
   };
   const [reviewForm, setFormValue] = useState(defaultForm);
+  const [imageUpload, setImageUpload] = useState([]);
+
 
   const { url, submission, updateReviews } = props;
+
+  const getImage = (event) => {
+    console.log(event.target.files[0]);
+    setImageUpload(event.target.files[0]);
+  };
 
   const updateForm = (event) => {
     setFormValue({
@@ -42,24 +49,47 @@ const ReviewForm = (props) => {
     });
   };
 
-  const submitForm = (event) => {
+  const submitImage = (event) => {
     event.preventDefault();
-    axios.post(`/api/rateFood${url}`, reviewForm)
-      .then(() => axios.get(`/api/rateFood${url}`))
-      .then((data) => {
-        updateReviews(data.data[0]);
-      })
-      .then(() => {
-        submission();
-      })
-      .catch((err) => {
-        console.log('Error with posting review ', err);
-      });
+    const data = new FormData();
+    data.append('Image', imageUpload);
+    // data.append('Restaurant', reviewForm.Restaurant);
+    // data.append('Reviewer', reviewForm.Reviewer);
+    // data.append('Date', reviewForm.Date);
+    axios.post(`/api/rateFood${url}/image`, data, {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    })
+      .then((res) => { console.log(res); });
   };
-  
+
+  // const submitForm = (event) => {
+  //   event.preventDefault();
+  //   axios.post(`/api/rateFood${url}`, reviewForm)
+  //     // .then(() => {
+  //     //   console.log(imageUpload.length);
+  //     //   if (imageUpload.length === undefined) {
+  //     //     submitImage();
+  //     //     console.log('hit');
+  //     //   }
+  //     // })
+  //     .then(() => axios.get(`/api/rateFood${url}`))
+  //     .then((data) => {
+  //       updateReviews(data.data[0]);
+  //     })
+  //     .then(() => {
+  //       submission();
+  //     })
+  //     .catch((err) => {
+  //       console.log('Error with posting review ', err);
+  //     });
+  // };
+  // submitForm
+
   return (
-    <Form onSubmit={submitForm}>
-      <div>
+    <Form onSubmit={submitImage}>
+      {/* <div>
         <label>
             Name:
         </label>
@@ -72,6 +102,7 @@ const ReviewForm = (props) => {
             Rating:
         </label>
         <RatingSelect value={reviewForm.Rating} required onChange={updateForm} id="Rating">
+          <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -107,6 +138,14 @@ const ReviewForm = (props) => {
         </label>
         <div>
           <textarea onChange={updateForm} value={reviewForm.Review} rows="5" cols="40" id="Review" maxLength="280" />
+        </div>
+      </div> */}
+      <div>
+        <label>
+          Upload an image:
+        </label>
+        <div>
+          <input onChange={getImage} id="Image" type="file" />
         </div>
       </div>
       <div>
