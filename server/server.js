@@ -14,7 +14,7 @@ const query = require('../database/mongoControllers.js');
 const storage = multer.diskStorage({
   destination: path.resolve(__dirname, '../storedImages'),
   filename(req, file, cb) {
-    cb(null, `IMAGE-${path.extname(file.originalname)}`);
+    cb(null, `IMAGE-${moment().local().format()}-${file.originalname}`);
   },
 });
 
@@ -45,6 +45,7 @@ app.get('/api/rateFood/:category/:foodId', (req, res) => {
 app.post('/api/rateFood/:category/:foodId/image', (req, res) => {
   console.log('hit');
   upload(req, res, (err) => {
+    console.log('body', req.body);
     console.log('Request file ---', req.file);
     res.send(200);
   });

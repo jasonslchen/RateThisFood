@@ -38,7 +38,6 @@ const ReviewForm = (props) => {
   const { url, submission, updateReviews } = props;
 
   const getImage = (event) => {
-    console.log(event.target.files[0]);
     setImageUpload(event.target.files[0]);
   };
 
@@ -49,14 +48,13 @@ const ReviewForm = (props) => {
     });
   };
 
-  const submitImage = (event) => {
-    event.preventDefault();
+  const submitImage = () => {
     const data = new FormData();
     data.append('Image', imageUpload);
-    // data.append('Restaurant', reviewForm.Restaurant);
-    // data.append('Reviewer', reviewForm.Reviewer);
-    // data.append('Date', reviewForm.Date);
-    axios.post(`/api/rateFood${url}/image`, data, {
+    data.append('Restaurant', reviewForm.Restaurant);
+    data.append('Reviewer', reviewForm.Reviewer);
+    data.append('Date', reviewForm.Date);
+    return axios.post(`/api/rateFood${url}/image`, data, {
       headers: {
         'content-type': 'multipart/form-data',
       },
@@ -64,32 +62,30 @@ const ReviewForm = (props) => {
       .then((res) => { console.log(res); });
   };
 
-  // const submitForm = (event) => {
-  //   event.preventDefault();
-  //   axios.post(`/api/rateFood${url}`, reviewForm)
-  //     // .then(() => {
-  //     //   console.log(imageUpload.length);
-  //     //   if (imageUpload.length === undefined) {
-  //     //     submitImage();
-  //     //     console.log('hit');
-  //     //   }
-  //     // })
-  //     .then(() => axios.get(`/api/rateFood${url}`))
-  //     .then((data) => {
-  //       updateReviews(data.data[0]);
-  //     })
-  //     .then(() => {
-  //       submission();
-  //     })
-  //     .catch((err) => {
-  //       console.log('Error with posting review ', err);
-  //     });
-  // };
-  // submitForm
+  const submitForm = (event) => {
+    event.preventDefault();
+    axios.post(`/api/rateFood${url}`, reviewForm)
+      .then(() => {
+        if (imageUpload.length === undefined) {
+          submitImage();
+        }
+      })
+      .then(() => axios.get(`/api/rateFood${url}`))
+      .then((data) => {
+        updateReviews(data.data[0]);
+      })
+      .then(() => {
+        submission();
+      })
+      .catch((err) => {
+        console.log('Error with posting review ', err);
+      });
+  };
+
 
   return (
-    <Form onSubmit={submitImage}>
-      {/* <div>
+    <Form onSubmit={submitForm}>
+      <div>
         <label>
             Name:
         </label>
@@ -139,7 +135,7 @@ const ReviewForm = (props) => {
         <div>
           <textarea onChange={updateForm} value={reviewForm.Review} rows="5" cols="40" id="Review" maxLength="280" />
         </div>
-      </div> */}
+      </div>
       <div>
         <label>
           Upload an image:
