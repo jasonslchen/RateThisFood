@@ -38,7 +38,7 @@ const Dessert = (props) => {
   const toggleReviewForm = () => {
     setReviewSubmission(!reviewSubmit);
   };
-  const updateReviews = (data) => {
+  const updateDessertData = (data) => {
     setDessertData(data);
   };
 
@@ -56,7 +56,7 @@ const Dessert = (props) => {
       <ImageGallery images={dessertData.Images} />
       <Reviews reviews={dessertData.Reviews} />
       {
-        reviewSubmit ? thankYouForTheReview : <ReviewForm updateReviews={updateReviews} submission={toggleReviewForm} url={props.match.url} />
+        reviewSubmit ? thankYouForTheReview : <ReviewForm updateDessertData={updateDessertData} submission={toggleReviewForm} url={props.match.url} />
       }
     </div>
   );

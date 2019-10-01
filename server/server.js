@@ -41,17 +41,29 @@ app.get('/api/rateFood/:category/:foodId', (req, res) => {
     });
 });
 
-// get category page with food infos from selecting from a dropdown with courses
+// upload image
+
 app.post('/api/rateFood/:category/:foodId/image', (req, res) => {
-  console.log('hit');
   upload(req, res, (err) => {
     console.log('body', req.body);
     console.log('Request file ---', req.file);
-    res.send(200);
+    const imageData = {
+      Image: req.file.filename,
+      Restaurant: req.body.Restaurant,
+      Reviewer: req.body.Reviewer,
+      Date: req.body.Date,
+    };
+    query.addPicture(req.params.category, req.params.foodId, imageData)
+      .then(() => {
+        res.sendStatus(200);
+      })
+      .catch((error) => {
+        res.status(500).send({ error });
+      });
   });
 });
 
-// upload image
+// get category page with food infos from selecting from a dropdown with courses
 
 app.get('/api/rateFood/:course/:category', (req, res) => {
 

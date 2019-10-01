@@ -35,6 +35,10 @@ const getFood = (category, food) => {
   return thisFood.find({ Food: food });
 };
 
+const addPicture = (category, food, details) => {
+  const thisFood = mongoose.model(`${category}`, foodSchema);
+  return thisFood.update({ Food: food }, { $push: { Images: details } });
+};
 
 const addFood = (category, details) => {
   const NewFood = mongoose.model(`${category}`, foodSchema);
@@ -50,3 +54,4 @@ const addReview = (category, food, details) => {
 module.exports.getFood = getFood;
 module.exports.addFood = addFood;
 module.exports.addReview = addReview;
+module.exports.addPicture = addPicture;

@@ -35,7 +35,7 @@ const ReviewForm = (props) => {
   const [imageUpload, setImageUpload] = useState([]);
 
 
-  const { url, submission, updateReviews } = props;
+  const { url, submission, updateDessertData } = props;
 
   const getImage = (event) => {
     setImageUpload(event.target.files[0]);
@@ -67,12 +67,13 @@ const ReviewForm = (props) => {
     axios.post(`/api/rateFood${url}`, reviewForm)
       .then(() => {
         if (imageUpload.length === undefined) {
-          submitImage();
+          return submitImage();
         }
       })
       .then(() => axios.get(`/api/rateFood${url}`))
       .then((data) => {
-        updateReviews(data.data[0]);
+        console.log(data);
+        updateDessertData(data.data[0]);
       })
       .then(() => {
         submission();
