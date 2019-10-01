@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 app.use(morgan('tiny'));
 
 app.use('/', express.static(path.resolve(__dirname, '../public')));
-
+app.use('/images', express.static(path.resolve(__dirname, '../storedImages')));
 // get when you're in a category get food information
 app.get('/api/rateFood/:category/:foodId', (req, res) => {
   query.getFood(req.params.category, req.params.foodId)

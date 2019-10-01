@@ -22,10 +22,14 @@ const FoodImage = styled.img`
 `;
 const Image = (props) => {
   const { image } = props;
+  let source = image.Image;
+  if (!image.Image.includes('.com')) {
+    source = `/images/${image.Image}`;
+  }
   return (
     <div>
       <FoodImageDiv>
-        <FoodImage src={image.Image} alt={image || 'no image'} />
+        <FoodImage src={source} alt={image || 'no image'} />
       </FoodImageDiv>
     </div>
   );

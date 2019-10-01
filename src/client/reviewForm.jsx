@@ -72,7 +72,6 @@ const ReviewForm = (props) => {
       })
       .then(() => axios.get(`/api/rateFood${url}`))
       .then((data) => {
-        console.log(data);
         updateDessertData(data.data[0]);
       })
       .then(() => {
