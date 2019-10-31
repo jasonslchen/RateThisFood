@@ -1,6 +1,6 @@
 # RateThisFood
 
-A food rating web application to rate foods by dishes and find restaurants to eat at with that food. 
+A full stack food rating web application to rate foods by dishes. 
 
 Click to checkout the video.
 
