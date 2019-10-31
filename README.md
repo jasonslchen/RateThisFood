@@ -3,7 +3,6 @@
 A food rating web application to rate foods by dishes and find restaurants to eat at with that food. 
 
 [![RateThisFood Video](https://img.youtube.com/vi/h58cI1eNcm0/0.jpg)](https://www.youtube.com/watch?v=h58cI1eNcm0)
-https://youtu.be/h58cI1eNcm0
 
 ## Table of Contents
 
