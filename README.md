@@ -1,6 +1,6 @@
 # RateThisFood
 
-A full stack food rating web application to rate foods by dishes. 
+A full stack food rating web application to rate dishes. 
 
 Click to checkout the video.
 
